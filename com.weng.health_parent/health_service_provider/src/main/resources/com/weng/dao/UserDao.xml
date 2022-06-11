@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.weng.dao.UserDao">
+    <select id="findByUsername" parameterType="string" resultType="com.weng.pojo.User">
+        select * from t_user where username = #{username}
+    </select>
+
+    <update id="editPassword" parameterType="com.weng.pojo.User">
+        update t_user
+        <set>
+            <if test="gender != null">
+                gender = #{gender},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+            <if test="telephone != null">
+                telephone = #{telephone},
+            </if>
+        </set>
+        where username = #{username}
+    </update>
+
+    <select id="selectByCondition" parameterType="String" resultType="com.weng.pojo.User">
+        select * from t_user
+    </select>
+
+    <update id="updateBalance" parameterType="com.weng.pojo.User">
+        update t_user
+        set balance=#{balance}
+        where username=#{username}
+    </update>
+
+    <insert id="add" parameterType="com.weng.pojo.Ord">
+        insert into (userId,ordCode,createTime,ordTime,remark,setmealCode,idCard,phoneNumber)
+        values(#{userId},#{ordCode},#{createTime},#{ordTime},#{remark},#{setmealCode},#{idCard},#{phoneNumber})
+    </insert>
+</mapper>

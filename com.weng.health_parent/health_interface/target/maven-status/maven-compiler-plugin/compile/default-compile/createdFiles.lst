@@ -1,0 +1,9 @@
+weng\service\UserService.class
+weng\service\OrderSettingService.class
+weng\service\MemberService.class
+weng\service\SetmealService.class
+weng\service\CheckGroupService.class
+weng\service\OrdService.class
+weng\service\LoginService.class
+weng\service\MaterialService.class
+weng\service\CheckItemService.class

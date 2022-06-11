@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.weng.dao.MaterialDao">
+    <insert id="add" parameterType="com.weng.pojo.Material">
+        insert into t_material(code,name,remark,createTime,inventory)
+        values
+        (#{code},#{name},#{remark},#{createTime},#{inventory})
+    </insert>
+
+    <select id="selectByCondition" parameterType="String" resultType="com.weng.pojo.Material">
+        select * from t_material
+        <if test="value != null and value.length>0">
+            where code= #{value} or name = #{value}
+        </if>
+    </select>
+    <delete id="deleteById" parameterType="int">
+        delete from t_material
+        where id=#{id}
+    </delete>
+    <update id="edit" parameterType="com.weng.pojo.Material">
+        update t_material
+        <set>
+            <if test="code !=null">
+                code=#{code},
+            </if>
+            <if test="name !=null">
+                name=#{name},
+            </if>
+            <if test="remark !=null">
+                remark=#{remark},
+            </if>
+            <if test="createTime !=null">
+                createTime=#{createTime},
+            </if>
+            <if test="updateTime !=null">
+                updateTime=#{updateTime},
+            </if>
+            <if test="inventory !=null">
+                inventory=#{inventory},
+            </if>
+        </set>
+            where id=#{id}
+    </update>
+
+    <select id="findById" parameterType="int" resultType="com.weng.pojo.Material">
+        select * from t_material
+        where id=#{id}
+    </select>
+</mapper>

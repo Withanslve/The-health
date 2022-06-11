@@ -1,0 +1,10 @@
+com\weng\controller\LoginController.class
+com\weng\controller\MemberController.class
+com\weng\controller\CheckItemController.class
+com\weng\service\SpringSecurityUserService.class
+com\weng\controller\MaterialController.class
+com\weng\controller\CheckGroupController.class
+com\weng\controller\UserController.class
+com\weng\controller\OrderSettingController.class
+com\weng\controller\OrdController.class
+com\weng\controller\SetmealController.class

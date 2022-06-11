@@ -1,0 +1,17 @@
+com\weng\utils\POIUtils.class
+com\weng\constant\MessageConstant.class
+com\weng\pojo\Ord.class
+com\weng\pojo\Permission.class
+com\weng\pojo\Role.class
+com\weng\pojo\CheckItem.class
+com\weng\pojo\Member.class
+com\weng\pojo\Setmeal.class
+com\weng\pojo\CheckGroup.class
+com\weng\pojo\Material.class
+com\weng\constant\RedisConstant.class
+com\weng\entity\PageResult.class
+com\weng\entity\QueryPageBean.class
+com\weng\entity\Result.class
+com\weng\pojo\OrderSetting.class
+com\weng\utils\QiniuUtils.class
+com\weng\pojo\User.class

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- 页面meta -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>传智健康</title>
+        <meta name="description">
+        <meta name="keywords">
+        <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+        <!-- 引入样式 -->
+        <link rel="stylesheet" href="../css/style.css">
+        <script src="../plugins/echars/echarts.js"></script>
+    </head>
+    <body class="hold-transition">
+        <div id="app">
+            <div class="content-header">
+                <h1>统计分析<small>会员数量</small></h1>
+                <el-breadcrumb separator-class="el-icon-arrow-right" class="breadcrumb">
+                    <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+                    <el-breadcrumb-item>统计分析</el-breadcrumb-item>
+                    <el-breadcrumb-item>会员数量</el-breadcrumb-item>
+                </el-breadcrumb>
+            </div>
+            <div class="app-container">
+                <div class="box">
+                    <div id="chart1" style="height:600px;"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <!-- 引入组件库 -->
+    <script src="../js/vue.js"></script>
+    <script src="../js/axios-0.18.0.js"></script>
+    <script type="text/javascript">
+        var myChart1 = echarts.init(document.getElementById('chart1'));
+
+
+        axios.get("/member/number.do").then((res)=>{
+            myChart1.setOption(
+                                {
+                                    xAxis: {
+                                        data: res.data.data.months
+                                    },
+                                    yAxis: {
+                                        type: 'value',
+                                        boundaryGap: [0, '30%']
+                                    },
+                                    visualMap: {
+                                        type: 'piecewise',
+                                        show: false,
+                                        dimension: 0,
+                                        seriesIndex: 0,
+                                        pieces: [
+                                            {
+                                                gt: 1,
+                                                lt: 3,
+                                                color: 'rgba(0, 0, 180, 0.4)'
+                                            },
+                                            {
+                                                gt: 5,
+                                                lt: 7,
+                                                color: 'rgba(0, 0, 180, 0.4)'
+                                            }
+                                        ]
+                                    },
+                                    series: [
+                                        {
+                                            type: 'line',
+                                            smooth: 0.6,
+                                            symbol: 'none',
+                                            lineStyle: {
+                                                color: '#5470C6',
+                                                width: 5
+                                            },
+                                            markLine: {
+                                                symbol: ['none', 'none'],
+                                                label: { show: false },
+                                                data: [{ xAxis: 1 }, { xAxis: 3 }, { xAxis: 5 }, { xAxis: 7 }]
+                                            },
+                                            areaStyle: {},
+                                            data: res.data.data.memberCount
+                                        }
+                                    ]
+                                });
+        });
+    </script>
+</html>
